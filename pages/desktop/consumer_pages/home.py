@@ -33,6 +33,7 @@ class Home(Base):
         WebDriverWait(self.selenium, self.timeout).until(
             lambda s: self.selenium.execute_script('return jQuery.isReady == true'))
         self.wait_for_element_visible(*self._site_navigation_menu_locator)
+        import time; time.sleep(10)
 
     @property
     def is_promo_box_visible(self):
