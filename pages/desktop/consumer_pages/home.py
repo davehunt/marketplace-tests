@@ -5,7 +5,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as expected
 from selenium.webdriver.support.ui import WebDriverWait
 
 from pages.desktop.consumer_pages.base import Base
@@ -31,9 +30,7 @@ class Home(Base):
     def go_to_homepage(self):
         self.set_window_size()
         self.selenium.get(self.base_url)
-        WebDriverWait(self.selenium, self.timeout).until(
-            expected.presence_of_element_located(
-                (By.CSS_SELECTOR, 'body.loaded')))
+        self.wait_for_page_to_load()
 
     @property
     def is_promo_box_visible(self):

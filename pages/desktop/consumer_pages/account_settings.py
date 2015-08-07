@@ -27,6 +27,7 @@ class AccountSettings(Base):
     def go_to_settings_page(self):
         self.set_window_size()
         self.selenium.get(self.base_url + '/settings')
+        self.wait_for_page_loaded()
 
     @property
     def header_title(self):
